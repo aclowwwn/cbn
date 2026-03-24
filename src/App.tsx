@@ -165,16 +165,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f8f4ea] text-[#1f2940] font-serif selection:bg-[#c8a55b] selection:text-[#1f2940]">
       {/* Header */}
-      <header className="bg-[#fffdf8] border-b border-[#e6dcc8] py-8 px-4 text-center sticky top-0 z-10 print:hidden">
+      <header className="bg-[#fffdf8] border-b border-[#e6dcc8] py-4 px-4 text-center sticky top-0 z-10 print:hidden">
         <h1 className="text-2xl md:text-3xl font-bold text-[#1f2940] tracking-tight">
           Colegiul Biblic Neemia
         </h1>
-        <p className="text-sm uppercase tracking-widest mt-2 opacity-70">
+        <p className="text-xs uppercase tracking-widest mt-1 opacity-70">
           Principiile slujirii creștine 2026
         </p>
         
         {/* Progress Bar */}
-        <div className="max-w-3xl mx-auto mt-8 relative">
+        <div className="max-w-3xl mx-auto mt-4 relative">
           <div className="h-1 bg-[#e6dcc8] w-full rounded-full">
             <motion.div 
               className="h-full bg-[#c8a55b] rounded-full"
@@ -182,16 +182,16 @@ export default function App() {
               animate={{ width: `${(Math.max(0, data.currentStep) / (steps.length - 1)) * 100}%` }}
             />
           </div>
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-between mt-2">
             {steps.map((step, idx) => (
               <div 
                 key={idx} 
                 className={`flex flex-col items-center transition-opacity duration-300 ${idx === data.currentStep ? 'opacity-100' : 'opacity-30'}`}
               >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${idx <= data.currentStep ? 'bg-[#1f2940] text-[#f8f4ea]' : 'bg-[#e6dcc8] text-[#1f2940]'}`}>
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold ${idx <= data.currentStep ? 'bg-[#1f2940] text-[#f8f4ea]' : 'bg-[#e6dcc8] text-[#1f2940]'}`}>
                   {idx === 0 ? 'H' : idx === 7 ? 'F' : idx}
                 </div>
-                <span className="hidden md:block text-[10px] mt-1 font-sans font-semibold uppercase tracking-tighter">
+                <span className="hidden md:block text-[9px] mt-1 font-sans font-semibold uppercase tracking-tighter">
                   {step.title.split(' ')[0]}
                 </span>
               </div>
@@ -200,7 +200,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto py-12 px-6 pb-32 print:p-0">
+      <main className="max-w-4xl mx-auto py-8 px-6 pb-24 print:p-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={data.currentStep}
@@ -502,16 +502,16 @@ export default function App() {
       </main>
 
       {/* Navigation Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#fffdf8]/90 backdrop-blur-md border-t border-[#e6dcc8] py-6 px-4 z-10 print:hidden">
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#fffdf8]/90 backdrop-blur-md border-t border-[#e6dcc8] py-3 px-4 z-10 print:hidden">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <button
             onClick={prevStep}
             disabled={data.currentStep === 0}
-            className={`flex items-center gap-2 py-3 px-6 rounded-2xl font-bold font-sans transition-all ${
+            className={`flex items-center gap-1.5 py-2 px-4 rounded-xl font-bold font-sans text-sm transition-all ${
               data.currentStep === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-[#f8f4ea] text-[#1f2940]'
             }`}
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4" />
             Înapoi
           </button>
 
@@ -527,10 +527,10 @@ export default function App() {
           {data.currentStep < 7 ? (
             <button
               onClick={nextStep}
-              className="flex items-center gap-2 bg-[#1f2940] text-[#f8f4ea] py-3 px-8 rounded-2xl font-bold font-sans hover:bg-[#2b3650] transition-all shadow-lg shadow-[#1f2940]/20"
+              className="flex items-center gap-1.5 bg-[#1f2940] text-[#f8f4ea] py-2 px-5 rounded-xl font-bold font-sans text-sm hover:bg-[#2b3650] transition-all shadow-lg shadow-[#1f2940]/20"
             >
               Înainte
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           ) : (
             <div className="w-[120px]" /> /* Spacer */
