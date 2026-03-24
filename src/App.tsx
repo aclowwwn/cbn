@@ -163,10 +163,10 @@ export default function App() {
   if (!isLoaded) return null;
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0] text-[#1a1a1a] font-serif selection:bg-[#5A5A40] selection:text-white">
+    <div className="min-h-screen bg-[#f8f4ea] text-[#1f2940] font-serif selection:bg-[#c8a55b] selection:text-[#1f2940]">
       {/* Header */}
-      <header className="bg-white border-b border-[#e5e5e0] py-8 px-4 text-center sticky top-0 z-10 print:hidden">
-        <h1 className="text-2xl md:text-3xl font-bold text-[#5A5A40] tracking-tight">
+      <header className="bg-[#fffdf8] border-b border-[#e6dcc8] py-8 px-4 text-center sticky top-0 z-10 print:hidden">
+        <h1 className="text-2xl md:text-3xl font-bold text-[#1f2940] tracking-tight">
           Colegiul Biblic Neemia
         </h1>
         <p className="text-sm uppercase tracking-widest mt-2 opacity-70">
@@ -175,9 +175,9 @@ export default function App() {
         
         {/* Progress Bar */}
         <div className="max-w-3xl mx-auto mt-8 relative">
-          <div className="h-1 bg-[#e5e5e0] w-full rounded-full">
+          <div className="h-1 bg-[#e6dcc8] w-full rounded-full">
             <motion.div 
-              className="h-full bg-[#5A5A40] rounded-full"
+              className="h-full bg-[#c8a55b] rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${(Math.max(0, data.currentStep) / (steps.length - 1)) * 100}%` }}
             />
@@ -188,7 +188,7 @@ export default function App() {
                 key={idx} 
                 className={`flex flex-col items-center transition-opacity duration-300 ${idx === data.currentStep ? 'opacity-100' : 'opacity-30'}`}
               >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${idx <= data.currentStep ? 'bg-[#5A5A40] text-white' : 'bg-[#e5e5e0]'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${idx <= data.currentStep ? 'bg-[#1f2940] text-[#f8f4ea]' : 'bg-[#e6dcc8] text-[#1f2940]'}`}>
                   {idx === 0 ? 'H' : idx === 7 ? 'F' : idx}
                 </div>
                 <span className="hidden md:block text-[10px] mt-1 font-sans font-semibold uppercase tracking-tighter">
@@ -208,12 +208,12 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-white p-8 md:p-12 rounded-[32px] shadow-sm border border-[#e5e5e0] print:shadow-none print:border-none print:p-0"
+            className="bg-[#fffdf8] p-8 md:p-12 rounded-[32px] shadow-sm border border-[#e6dcc8] print:shadow-none print:border-none print:p-0"
           >
             {/* Step Content */}
             {data.currentStep === 0 && (
               <section className="text-center py-8">
-                <div className="bg-[#f5f5f0] w-20 h-20 rounded-full flex items-center justify-center text-[#5A5A40] mx-auto mb-8">
+                <div className="bg-[#f8f4ea] w-20 h-20 rounded-full flex items-center justify-center text-[#1f2940] mx-auto mb-8">
                   <BookOpen className="w-10 h-10" />
                 </div>
                 <h2 className="text-3xl font-bold mb-6 italic">Bun venit la Evaluarea Slujirii</h2>
@@ -224,13 +224,13 @@ export default function App() {
                   <p>
                     Vom trece împreună prin 6 etape esențiale: experiența ta spirituală, interesele, oportunitățile de slujire, pasiunile, stilul personal și darurile spirituale.
                   </p>
-                  <p className="font-sans text-sm font-bold uppercase tracking-widest text-[#5A5A40]">
+                  <p className="font-sans text-sm font-bold uppercase tracking-widest text-[#c8a55b]">
                     Ești gata să începi călătoria?
                   </p>
                 </div>
                 <button
                   onClick={nextStep}
-                  className="bg-[#5A5A40] text-white py-4 px-12 rounded-2xl font-bold font-sans hover:bg-[#4a4a35] transition-all shadow-lg shadow-[#5A5A40]/20 text-lg"
+                  className="bg-[#1f2940] text-[#f8f4ea] py-4 px-12 rounded-2xl font-bold font-sans hover:bg-[#2b3650] transition-all shadow-lg shadow-[#1f2940]/20 text-lg"
                 >
                   Începe Testul
                 </button>
@@ -240,7 +240,7 @@ export default function App() {
             {data.currentStep === 1 && (
               <section>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-[#f5f5f0] p-3 rounded-2xl text-[#5A5A40]">
+                  <div className="bg-[#f8f4ea] p-3 rounded-2xl text-[#1f2940]">
                     {steps[1].icon}
                   </div>
                   <div>
@@ -253,7 +253,7 @@ export default function App() {
                     <div key={q.id}>
                       <label className="block text-lg mb-3 font-medium">{q.label}</label>
                       <textarea
-                        className="w-full bg-[#f9f9f7] border border-[#e5e5e0] rounded-2xl p-4 focus:ring-2 focus:ring-[#5A5A40] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
+                        className="w-full bg-[#fbf7ef] border border-[#e6dcc8] rounded-2xl p-4 focus:ring-2 focus:ring-[#c8a55b] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
                         value={data.spiritualExperience[q.id as keyof SpiritualExperienceAnswers]}
                         onChange={(e) => updateSpiritualExperience(q.id as keyof SpiritualExperienceAnswers, e.target.value)}
                         placeholder="Răspunsul tău aici..."
@@ -267,7 +267,7 @@ export default function App() {
             {data.currentStep === 2 && (
               <section>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-[#f5f5f0] p-3 rounded-2xl text-[#5A5A40]">
+                  <div className="bg-[#f8f4ea] p-3 rounded-2xl text-[#1f2940]">
                     {steps[2].icon}
                   </div>
                   <div>
@@ -275,7 +275,7 @@ export default function App() {
                     <p className="text-sm opacity-60">Fișă de lucru</p>
                   </div>
                 </div>
-                <blockquote className="border-l-4 border-[#5A5A40] pl-6 py-2 mb-8 italic text-lg opacity-80">
+                <blockquote className="border-l-4 border-[#c8a55b] pl-6 py-2 mb-8 italic text-lg opacity-80">
                   "Coloseni 3:23-24 Orice faceţi, să faceţi din toată inima, ca pentru Domnul, nu ca pentru oameni, ca unii care ştiţi că veţi primi de la Domnul răsplata moştenirii. Voi slujiţi Domnului Hristos."
                 </blockquote>
                 <p className="mb-8 font-sans text-sm uppercase tracking-wider font-bold opacity-70">Cu toții avem interese variate dintr-o multitudine de motive.</p>
@@ -284,7 +284,7 @@ export default function App() {
                     <div key={q.id}>
                       <label className="block text-lg mb-3 font-medium">{q.label}</label>
                       <textarea
-                        className="w-full bg-[#f9f9f7] border border-[#e5e5e0] rounded-2xl p-4 focus:ring-2 focus:ring-[#5A5A40] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
+                        className="w-full bg-[#fbf7ef] border border-[#e6dcc8] rounded-2xl p-4 focus:ring-2 focus:ring-[#c8a55b] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
                         value={data.interests[q.id as keyof InterestAnswers]}
                         onChange={(e) => updateInterests(q.id as keyof InterestAnswers, e.target.value)}
                         placeholder="Răspunsul tău aici..."
@@ -298,7 +298,7 @@ export default function App() {
             {data.currentStep === 3 && (
               <section>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-[#f5f5f0] p-3 rounded-2xl text-[#5A5A40]">
+                  <div className="bg-[#f8f4ea] p-3 rounded-2xl text-[#1f2940]">
                     {steps[3].icon}
                   </div>
                   <div>
@@ -311,7 +311,7 @@ export default function App() {
                     <div key={q.id}>
                       <label className="block text-lg mb-3 font-medium">{q.label}</label>
                       <textarea
-                        className="w-full bg-[#f9f9f7] border border-[#e5e5e0] rounded-2xl p-4 focus:ring-2 focus:ring-[#5A5A40] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
+                        className="w-full bg-[#fbf7ef] border border-[#e6dcc8] rounded-2xl p-4 focus:ring-2 focus:ring-[#c8a55b] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
                         value={data.opportunities[q.id as keyof OpportunitiesAnswers]}
                         onChange={(e) => updateOpportunities(q.id as keyof OpportunitiesAnswers, e.target.value)}
                         placeholder="Răspunsul tău aici..."
@@ -325,7 +325,7 @@ export default function App() {
             {data.currentStep === 4 && (
               <section>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-[#f5f5f0] p-3 rounded-2xl text-[#5A5A40]">
+                  <div className="bg-[#f8f4ea] p-3 rounded-2xl text-[#1f2940]">
                     {steps[4].icon}
                   </div>
                   <div>
@@ -338,7 +338,7 @@ export default function App() {
                     <div key={q.id}>
                       <label className="block text-lg mb-3 font-medium">{q.label}</label>
                       <textarea
-                        className="w-full bg-[#f9f9f7] border border-[#e5e5e0] rounded-2xl p-4 focus:ring-2 focus:ring-[#5A5A40] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
+                        className="w-full bg-[#fbf7ef] border border-[#e6dcc8] rounded-2xl p-4 focus:ring-2 focus:ring-[#c8a55b] focus:border-transparent transition-all outline-none min-h-[100px] font-sans"
                         value={data.passion[q.id as keyof PassionAnswers]}
                         onChange={(e) => updatePassion(q.id as keyof PassionAnswers, e.target.value)}
                         placeholder="Răspunsul tău aici..."
@@ -352,7 +352,7 @@ export default function App() {
             {data.currentStep === 5 && (
               <section>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-[#f5f5f0] p-3 rounded-2xl text-[#5A5A40]">
+                  <div className="bg-[#f8f4ea] p-3 rounded-2xl text-[#1f2940]">
                     {steps[5].icon}
                   </div>
                   <div>
@@ -363,7 +363,7 @@ export default function App() {
                 
                 <div className="space-y-12">
                   <div>
-                    <h3 className="text-xl font-bold mb-6 border-b pb-2 border-[#5A5A40]/20">Cum te organizezi?</h3>
+                    <h3 className="text-xl font-bold mb-6 border-b pb-2 border-[#c8a55b]/40">Cum te organizezi?</h3>
                     <div className="space-y-8">
                       {PERSONAL_STYLE_ORGANIZE.map((item, idx) => (
                         <div key={idx} className="space-y-4">
@@ -378,8 +378,8 @@ export default function App() {
                                 onClick={() => updatePersonalStyle('organize', idx, val)}
                                 className={`flex-1 h-12 rounded-xl font-bold font-sans transition-all border ${
                                   data.personalStyle.organize[idx] === val 
-                                    ? 'bg-[#5A5A40] text-white border-[#5A5A40]' 
-                                    : 'bg-white text-[#5A5A40] border-[#e5e5e0] hover:border-[#5A5A40]'
+                                    ? 'bg-[#1f2940] text-[#f8f4ea] border-[#1f2940]' 
+                                    : 'bg-[#fffdf8] text-[#1f2940] border-[#e6dcc8] hover:border-[#c8a55b]'
                                 }`}
                               >
                                 {val}
@@ -392,7 +392,7 @@ export default function App() {
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-bold mb-6 border-b pb-2 border-[#5A5A40]/20">Cum te energizezi? (focalizezi)</h3>
+                    <h3 className="text-xl font-bold mb-6 border-b pb-2 border-[#c8a55b]/40">Cum te energizezi? (focalizezi)</h3>
                     <div className="space-y-8">
                       {PERSONAL_STYLE_ENERGIZE.map((item, idx) => (
                         <div key={idx} className="space-y-4">
@@ -407,8 +407,8 @@ export default function App() {
                                 onClick={() => updatePersonalStyle('energize', idx, val)}
                                 className={`flex-1 h-12 rounded-xl font-bold font-sans transition-all border ${
                                   data.personalStyle.energize[idx] === val 
-                                    ? 'bg-[#5A5A40] text-white border-[#5A5A40]' 
-                                    : 'bg-white text-[#5A5A40] border-[#e5e5e0] hover:border-[#5A5A40]'
+                                    ? 'bg-[#1f2940] text-[#f8f4ea] border-[#1f2940]' 
+                                    : 'bg-[#fffdf8] text-[#1f2940] border-[#e6dcc8] hover:border-[#c8a55b]'
                                 }`}
                               >
                                 {val}
@@ -426,7 +426,7 @@ export default function App() {
             {data.currentStep === 6 && (
               <section>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-[#f5f5f0] p-3 rounded-2xl text-[#5A5A40]">
+                  <div className="bg-[#f8f4ea] p-3 rounded-2xl text-[#1f2940]">
                     {steps[6].icon}
                   </div>
                   <div>
@@ -434,19 +434,19 @@ export default function App() {
                     <p className="text-sm opacity-60">Etapa 1: Evaluare</p>
                   </div>
                 </div>
-                <div className="bg-[#f5f5f0] p-6 rounded-2xl mb-8 font-sans text-sm">
+                <div className="bg-[#f8f4ea] p-6 rounded-2xl mb-8 font-sans text-sm">
                   <p className="font-bold mb-2">Instrucțiuni:</p>
                   <p>Citiți și răspundeți la fiecare întrebare marcând răspunsul care corespunde adevărului din viața Dvs.:</p>
                   <div className="flex gap-4 mt-4 flex-wrap">
-                    <span className="bg-white px-3 py-1 rounded-full border border-[#e5e5e0]"><strong>3</strong> - Frecvent</span>
-                    <span className="bg-white px-3 py-1 rounded-full border border-[#e5e5e0]"><strong>2</strong> - Uneori</span>
-                    <span className="bg-white px-3 py-1 rounded-full border border-[#e5e5e0]"><strong>1</strong> - Rar</span>
-                    <span className="bg-white px-3 py-1 rounded-full border border-[#e5e5e0]"><strong>0</strong> - Niciodată</span>
+                    <span className="bg-[#fffdf8] px-3 py-1 rounded-full border border-[#e6dcc8]"><strong>3</strong> - Frecvent</span>
+                    <span className="bg-[#fffdf8] px-3 py-1 rounded-full border border-[#e6dcc8]"><strong>2</strong> - Uneori</span>
+                    <span className="bg-[#fffdf8] px-3 py-1 rounded-full border border-[#e6dcc8]"><strong>1</strong> - Rar</span>
+                    <span className="bg-[#fffdf8] px-3 py-1 rounded-full border border-[#e6dcc8]"><strong>0</strong> - Niciodată</span>
                   </div>
                 </div>
                 <div className="space-y-6">
                   {SPIRITUAL_GIFTS_QUESTIONS.map((q, idx) => (
-                    <div key={idx} className="p-6 rounded-2xl border border-[#e5e5e0] hover:bg-[#f9f9f7] transition-colors">
+                    <div key={idx} className="p-6 rounded-2xl border border-[#e6dcc8] hover:bg-[#fbf7ef] transition-colors">
                       <p className="text-lg mb-4"><span className="opacity-40 mr-2">{idx + 1}.</span> {q}</p>
                       <div className="flex justify-between items-center gap-2 max-w-md">
                         {[3, 2, 1, 0].map((val) => (
@@ -455,8 +455,8 @@ export default function App() {
                             onClick={() => updateSpiritualGift(idx + 1, val)}
                             className={`flex-1 py-3 rounded-xl font-bold font-sans transition-all border ${
                               data.spiritualGifts[idx + 1] === val 
-                                ? 'bg-[#5A5A40] text-white border-[#5A5A40]' 
-                                : 'bg-white text-[#5A5A40] border-[#e5e5e0] hover:border-[#5A5A40]'
+                                ? 'bg-[#1f2940] text-[#f8f4ea] border-[#1f2940]' 
+                                : 'bg-[#fffdf8] text-[#1f2940] border-[#e6dcc8] hover:border-[#c8a55b]'
                             }`}
                           >
                             {val}
@@ -471,7 +471,7 @@ export default function App() {
 
             {data.currentStep === 7 && (
               <section className="text-center py-12">
-                <div className="bg-[#f5f5f0] w-24 h-24 rounded-full flex items-center justify-center text-[#5A5A40] mx-auto mb-8">
+                <div className="bg-[#f8f4ea] w-24 h-24 rounded-full flex items-center justify-center text-[#1f2940] mx-auto mb-8">
                   <CheckCircle2 className="w-12 h-12" />
                 </div>
                 <h2 className="text-3xl font-bold mb-4 italic">Felicitări!</h2>
@@ -482,14 +482,14 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg mx-auto">
                   <button
                     onClick={handlePrint}
-                    className="flex items-center justify-center gap-2 bg-[#5A5A40] text-white py-4 px-8 rounded-2xl font-bold font-sans hover:bg-[#4a4a35] transition-all shadow-lg shadow-[#5A5A40]/20"
+                    className="flex items-center justify-center gap-2 bg-[#1f2940] text-[#f8f4ea] py-4 px-8 rounded-2xl font-bold font-sans hover:bg-[#2b3650] transition-all shadow-lg shadow-[#1f2940]/20"
                   >
                     <Printer className="w-5 h-5" />
                     Printează PDF
                   </button>
                   <button
                     onClick={resetData}
-                    className="flex items-center justify-center gap-2 bg-white text-[#5A5A40] border-2 border-[#5A5A40] py-4 px-8 rounded-2xl font-bold font-sans hover:bg-[#f5f5f0] transition-all"
+                    className="flex items-center justify-center gap-2 bg-[#fffdf8] text-[#1f2940] border-2 border-[#c8a55b] py-4 px-8 rounded-2xl font-bold font-sans hover:bg-[#f8f4ea] transition-all"
                   >
                     <RotateCcw className="w-5 h-5" />
                     Reîncepe
@@ -502,13 +502,13 @@ export default function App() {
       </main>
 
       {/* Navigation Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-[#e5e5e0] py-6 px-4 z-10 print:hidden">
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#fffdf8]/90 backdrop-blur-md border-t border-[#e6dcc8] py-6 px-4 z-10 print:hidden">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <button
             onClick={prevStep}
             disabled={data.currentStep === 0}
             className={`flex items-center gap-2 py-3 px-6 rounded-2xl font-bold font-sans transition-all ${
-              data.currentStep === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-[#f5f5f0] text-[#5A5A40]'
+              data.currentStep === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-[#f8f4ea] text-[#1f2940]'
             }`}
           >
             <ChevronLeft className="w-5 h-5" />
@@ -519,7 +519,7 @@ export default function App() {
             {steps.map((_, idx) => (
               <div 
                 key={idx} 
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === data.currentStep ? 'w-8 bg-[#5A5A40]' : 'bg-[#e5e5e0]'}`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === data.currentStep ? 'w-8 bg-[#c8a55b]' : 'bg-[#e6dcc8]'}`}
               />
             ))}
           </div>
@@ -527,7 +527,7 @@ export default function App() {
           {data.currentStep < 7 ? (
             <button
               onClick={nextStep}
-              className="flex items-center gap-2 bg-[#5A5A40] text-white py-3 px-8 rounded-2xl font-bold font-sans hover:bg-[#4a4a35] transition-all shadow-lg shadow-[#5A5A40]/20"
+              className="flex items-center gap-2 bg-[#1f2940] text-[#f8f4ea] py-3 px-8 rounded-2xl font-bold font-sans hover:bg-[#2b3650] transition-all shadow-lg shadow-[#1f2940]/20"
             >
               Înainte
               <ChevronRight className="w-5 h-5" />
